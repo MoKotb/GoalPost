@@ -75,7 +75,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-O9-tGp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-O9-tGp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,6 +142,22 @@
                                                     <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iX7-uD-XUW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL COMPLETED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="FJC-4L-3iz">
+                                                            <rect key="frame" x="24.5" y="17.5" width="365.5" height="55"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="40"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.96470588239999999" green="0.65098039220000004" blue="0.13725490200000001" alpha="0.75" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FJC-4L-3iz" firstAttribute="centerY" secondItem="iX7-uD-XUW" secondAttribute="centerY" id="2UN-KQ-dnx"/>
+                                                        <constraint firstItem="FJC-4L-3iz" firstAttribute="centerX" secondItem="iX7-uD-XUW" secondAttribute="centerX" id="8om-9u-e8d"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6Oj-Ee-nBa" secondAttribute="bottom" constant="4" id="0Nx-rf-Vk1"/>
@@ -150,10 +166,15 @@
                                                 <constraint firstItem="6Oj-Ee-nBa" firstAttribute="leading" secondItem="azQ-Ec-Uu0" secondAttribute="trailing" constant="8" id="C3N-ZE-slm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6Oj-Ee-nBa" secondAttribute="trailing" constant="8" id="CUZ-gV-8cY"/>
                                                 <constraint firstItem="azQ-Ec-Uu0" firstAttribute="leading" secondItem="o5V-s7-oz9" secondAttribute="leading" constant="8" id="KhI-QZ-ngM"/>
+                                                <constraint firstAttribute="trailing" secondItem="iX7-uD-XUW" secondAttribute="trailing" id="Kil-3U-bUo"/>
+                                                <constraint firstItem="iX7-uD-XUW" firstAttribute="top" secondItem="o5V-s7-oz9" secondAttribute="top" id="dGf-2A-Xis"/>
+                                                <constraint firstItem="iX7-uD-XUW" firstAttribute="leading" secondItem="o5V-s7-oz9" secondAttribute="leading" id="msw-1j-mFa"/>
                                                 <constraint firstAttribute="bottom" secondItem="azQ-Ec-Uu0" secondAttribute="bottom" constant="8" id="nhP-eo-7ZK"/>
+                                                <constraint firstAttribute="bottom" secondItem="iX7-uD-XUW" secondAttribute="bottom" id="yfe-Uc-Rrm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="goalCompletedView" destination="iX7-uD-XUW" id="u2O-Dz-wNt"/>
                                             <outlet property="goalDescription" destination="U5w-9w-uDv" id="QLK-mC-CSL"/>
                                             <outlet property="goalProgress" destination="6Oj-Ee-nBa" id="wMK-ol-91f"/>
                                             <outlet property="goalType" destination="aLM-32-hgD" id="KT3-ut-12k"/>
@@ -436,9 +457,11 @@
                         <outlet property="backgroundView" destination="dZ5-Io-gd9" id="suA-k6-1Wk"/>
                         <outlet property="createGoalButton" destination="3sT-2C-Huy" id="2pA-dO-s8P"/>
                         <outlet property="progressTextField" destination="cHD-DH-7U0" id="gZ9-Uo-dAh"/>
+                        <segue destination="odN-RS-dAA" kind="unwind" identifier="UnwindToGoalVC" unwindAction="prepareForUnwindWithSegue:" id="McK-am-exO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHQ-1p-gDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="odN-RS-dAA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2137.68115942029" y="97.767857142857139"/>
         </scene>

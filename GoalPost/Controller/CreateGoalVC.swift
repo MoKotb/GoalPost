@@ -11,19 +11,19 @@ class CreateGoalVC: UIViewController , UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SetupView()
+        setupView()
     }
     
-    private func SetupView(){
+    private func setupView(){
         goalDescription.delegate = self
         nextButton.bindToKeyboard()
-        ConfigureGoalType(type: .ShortTerm)
+        configureGoalType(type: .ShortTerm)
         //Add Tap Gesture To Dismiss Keyboard
-        let tap = UITapGestureRecognizer(target: self, action: #selector(TapToClose))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToClose))
         view.addGestureRecognizer(tap)
     }
     
-    @objc private func TapToClose(){
+    @objc private func tapToClose(){
         view.endEditing(true)
     }
     
@@ -34,11 +34,10 @@ class CreateGoalVC: UIViewController , UITextViewDelegate {
         }else{
             goalDescription.text = ""
         }
-        
         goalDescription.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
-    private func ConfigureGoalType(type:GoalType){
+    private func configureGoalType(type:GoalType){
         if type == .ShortTerm{
             goalType = .ShortTerm
             shortTermButton.setSelectedColor()
@@ -51,11 +50,11 @@ class CreateGoalVC: UIViewController , UITextViewDelegate {
     }
 
     @IBAction func ShortTermPressed(_ sender: Any) {
-        ConfigureGoalType(type: .ShortTerm)
+        configureGoalType(type: .ShortTerm)
     }
     
     @IBAction func LongTermPressed(_ sender: Any) {
-        ConfigureGoalType(type: .LongTerm)
+        configureGoalType(type: .LongTerm)
     }
     
     @IBAction func NextPressed(_ sender: Any) {
